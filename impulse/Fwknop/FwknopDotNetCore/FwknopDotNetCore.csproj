@@ -5,24 +5,25 @@
   </PropertyGroup>
 
   <ItemGroup>
-      <Compile Include="..\..\..\.swig\SWIGTYPE_p_fko_context.cs" />
-      <Compile Include="..\..\..\.swig\SWIGTYPE_p_int.cs" />
-      <Compile Include="..\..\..\.swig\SWIGTYPE_p_p_char.cs" />
-      <Compile Include="..\..\..\.swig\SWIGTYPE_p_p_fko_context.cs" />
-      <Compile Include="..\..\..\.swig\SWIGTYPE_p_short.cs" />
-      <Compile Include="..\..\..\.swig\SWIGTYPE_p_time_t.cs" />
-      <Compile Include="..\..\..\.swig\SWIGTYPE_p_unsigned_char.cs" />
-      <Compile Include="..\..\..\.swig\fko_digest_type_t.cs" />
-      <Compile Include="..\..\..\.swig\fko_encryption_mode_t.cs" />
-      <Compile Include="..\..\..\.swig\fko_encryption_type_t.cs" />
-      <Compile Include="..\..\..\.swig\fko_error_codes_t.cs" />
-      <Compile Include="..\..\..\.swig\fko_hmac_type_t.cs" />
-      <Compile Include="..\..\..\.swig\fko_message_type_t.cs" />
-      <Compile Include="..\..\..\.swig\int_array.cs" />
-      <Compile Include="..\..\..\.swig\libfko.cs" />
-      <Compile Include="..\..\..\.swig\libfkoPINVOKE.cs" />
-      <Compile Include="..\..\..\.swig\short_array.cs" />
-      <Compile Include="..\..\..\.swig\uchar_array.cs" />
-    </ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\..\..\.swig\SWIGTYPE_p_fko_context.cs" />
+    <Compile Include="..\..\..\.swig\SWIGTYPE_p_int.cs" />
+    <Compile Include="..\..\..\.swig\SWIGTYPE_p_p_char.cs" />
+    <Compile Include="..\..\..\.swig\SWIGTYPE_p_p_fko_context.cs" />
+    <Compile Include="..\..\..\.swig\SWIGTYPE_p_short.cs" />
+    <Compile Include="..\..\..\.swig\SWIGTYPE_p_time_t.cs" />
+    <Compile Include="..\..\..\.swig\SWIGTYPE_p_unsigned_char.cs" />
+    <Compile Include="..\..\..\.swig\fko_digest_type_t.cs" />
+    <Compile Include="..\..\..\.swig\fko_encryption_mode_t.cs" />
+    <Compile Include="..\..\..\.swig\fko_encryption_type_t.cs" />
+    <Compile Include="..\..\..\.swig\fko_error_codes_t.cs" />
+    <Compile Include="..\..\..\.swig\fko_hmac_type_t.cs" />
+    <Compile Include="..\..\..\.swig\fko_message_type_t.cs" />
+    <Compile Include="..\..\..\.swig\int_array.cs" />
+    <Compile Include="..\..\..\.swig\libfko.cs" />
+    <Compile Include="..\..\..\.swig\libfkoPINVOKE.cs" />
+    <Compile Include="..\..\..\.swig\short_array.cs" />
+    <Compile Include="..\..\..\.swig\uchar_array.cs" />
+  </ItemGroup>
 
 </Project>
