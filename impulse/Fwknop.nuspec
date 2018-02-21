@@ -2,7 +2,7 @@
 <package >
 	<metadata>
 		<id>Fwknop</id>
-		<version>1.0.4</version>
+		<version>1.0.0</version>
 		<title>Fwknop</title>
 		<authors>Jeffrey Price</authors>
 		<owners>Impulse Point</owners>
@@ -10,20 +10,18 @@
 		<description>Wrapper around Fwknop</description>
 	</metadata>
 	<files>
-		<file src="*.cs" target="src"/>
-
 		<file src="Fwknop.targets" target="build"/>
 
-		<file src="..\fwknop\win32\Release\Win32\libfko.dll" target="build\x86"/>
-		<file src="..\fwknop\win32\Release\x64\libfko.dll" target="build\x64"/>
+		<file src="..\.build\sources\*.cs" target="src"/>
 
-		<file src="Fwknop\Fwknop\bin\Release\fwknop.dll" target="lib\net461"/>
-		<file src="Fwknop\Fwknop\bin\Release\Fwknop.pdb" target="lib\net461"/>
+		<file src="..\.build\win\x86\libfko.dll" target="build\x86"/>
+		<file src="..\.build\win\x64\libfko.dll" target="build\x64"/>
+		<file src="..\.build\mac\libfko.dylib" target="build\mac"/>
 
-		<!--
-		<file src="mac\build\libfko.dylib" target="build\mac\x64\libfko.dylib"/>
-		<file src="Fwknop\FwknopDotNetCore\bin\Release\netcoreapp2.0\Fwknop.dll" target="lib\Xamarin.Mac20"/>
-		<file src="Fwknop\FwknopDotNetCore\bin\Release\netcoreapp2.0\Fwknop.pdb" target="lib\Xamarin.Mac20"/>
-		-->
+		<file src="..\.build\csharp\classic\Fwknop.dll" target="lib\net461"/>
+		<file src="..\.build\csharp\classic\Fwknop.pdb" target="lib\net461"/>
+
+		<file src="..\.build\csharp\core\Fwknop.dll" target="lib\Xamarin.Mac20"/>
+		<file src="..\.build\csharp\core\Fwknop.pdb" target="lib\Xamarin.Mac20"/>
 	</files>
 </package>
