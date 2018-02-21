@@ -147,7 +147,7 @@
 +    <ClCompile Include="..\common\strlcat.c" />
 +    <ClCompile Include="..\common\strlcpy.c" />
      <ClCompile Include="getlogin.c" />
-+    <ClCompile Include="..\..\swig\libfko_wrap.c" />
++    <ClCompile Include="..\.swig\libfko_wrap.c" />
    </ItemGroup>
    <ItemGroup>
      <ClInclude Include="..\common\common.h" />
