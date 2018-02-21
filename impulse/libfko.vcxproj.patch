@@ -1,0 +1,167 @@
+--- /home/jprice/mount_points/windoze/libfko.vcxproj.original	2018-02-20 13:08:20.645243829 -0500
++++ /home/jprice/mount_points/windoze/libfko.vcxproj.new	2018-02-20 13:08:20.645243829 -0500
+@@ -21,6 +21,10 @@
+       <Configuration>Release</Configuration>
+       <Platform>Win32</Platform>
+     </ProjectConfiguration>
++    <ProjectConfiguration Include="Release|x64">
++      <Configuration>Release</Configuration>
++      <Platform>x64</Platform>
++    </ProjectConfiguration>
+   </ItemGroup>
+   <PropertyGroup Label="Globals">
+     <ProjectGuid>{133BC195-4877-481D-9F56-9F1BEBAD21F0}</ProjectGuid>
+@@ -56,6 +60,12 @@
+     <PlatformToolset>v141</PlatformToolset>
+     <CharacterSet>Unicode</CharacterSet>
+   </PropertyGroup>
++  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
++    <ConfigurationType>DynamicLibrary</ConfigurationType>
++    <PlatformToolset>v141</PlatformToolset>
++    <CharacterSet>Unicode</CharacterSet>
++    <WholeProgramOptimization>true</WholeProgramOptimization>
++  </PropertyGroup>
+   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+   <ImportGroup Label="ExtensionSettings">
+   </ImportGroup>
+@@ -74,28 +84,35 @@
+   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+   </ImportGroup>
++  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
++    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
++  </ImportGroup>
+   <PropertyGroup Label="UserMacros" />
+   <PropertyGroup>
+     <_ProjectFileVersion>14.0.25431.1</_ProjectFileVersion>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
++    <OutDir>$(SolutionDir)$(Configuration)/$(Platform)\</OutDir>
+     <IntDir>$(Configuration)\</IntDir>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
++    <OutDir>$(SolutionDir)$(Configuration)/$(Platform)\</OutDir>
+     <IntDir>$(Configuration)\</IntDir>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug-static|Win32'">
+-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
++    <OutDir>$(SolutionDir)$(Configuration)/$(Platform)\</OutDir>
+     <IntDir>$(Configuration)\</IntDir>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-static|Win32'">
+-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
++    <OutDir>$(SolutionDir)$(Configuration)/$(Platform)\</OutDir>
+     <IntDir>$(Configuration)\</IntDir>
+   </PropertyGroup>
+   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-full-static|Win32'">
+-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
++    <OutDir>$(SolutionDir)$(Configuration)/$(Platform)\</OutDir>
++    <IntDir>$(Configuration)\</IntDir>
++  </PropertyGroup>
++  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
++    <OutDir>$(SolutionDir)$(Configuration)/$(Platform)\</OutDir>
+     <IntDir>$(Configuration)\</IntDir>
+   </PropertyGroup>
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+@@ -114,6 +131,7 @@
+       <CompileAs>CompileAsC</CompileAs>
+     </ClCompile>
+     <Link>
++      <AdditionalDependencies>WS2_32.lib;Advapi32.lib</AdditionalDependencies>
+       <GenerateDebugInformation>true</GenerateDebugInformation>
+     </Link>
+   </ItemDefinitionGroup>
+@@ -129,6 +147,9 @@
+       <WarningLevel>Level3</WarningLevel>
+       <CompileAs>CompileAsC</CompileAs>
+     </ClCompile>
++    <Link>
++      <AdditionalDependencies>WS2_32.lib;Advapi32.lib</AdditionalDependencies>
++    </Link>
+   </ItemDefinitionGroup>
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-static|Win32'">
+     <ClCompile>
+@@ -145,6 +166,9 @@
+       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+       <CompileAs>CompileAsC</CompileAs>
+     </ClCompile>
++    <Link>
++      <AdditionalDependencies>WS2_32.lib;Advapi32.lib</AdditionalDependencies>
++    </Link>
+   </ItemDefinitionGroup>
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-static|Win32'">
+     <ClCompile>
+@@ -158,6 +182,9 @@
+       <WarningLevel>Level3</WarningLevel>
+       <CompileAs>CompileAsC</CompileAs>
+     </ClCompile>
++    <Link>
++      <AdditionalDependencies>WS2_32.lib;Advapi32.lib</AdditionalDependencies>
++    </Link>
+   </ItemDefinitionGroup>
+   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-full-static|Win32'">
+     <ClCompile>
+@@ -171,6 +198,25 @@
+       <WarningLevel>Level3</WarningLevel>
+       <CompileAs>CompileAsC</CompileAs>
+     </ClCompile>
++    <Link>
++      <AdditionalDependencies>WS2_32.lib;Advapi32.lib</AdditionalDependencies>
++    </Link>
++  </ItemDefinitionGroup>
++  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
++    <ClCompile>
++      <Optimization>MaxSpeed</Optimization>
++      <IntrinsicFunctions>false</IntrinsicFunctions>
++      <AdditionalIncludeDirectories>.;..\common;..\lib;..\client;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
++      <PreprocessorDefinitions>DLL_EXPORTS;WIN32;HAVE_CONFIG_H;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
++      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
++      <FunctionLevelLinking>true</FunctionLevelLinking>
++      <PrecompiledHeader />
++      <WarningLevel>Level3</WarningLevel>
++      <CompileAs>CompileAsC</CompileAs>
++    </ClCompile>
++    <Link>
++      <AdditionalDependencies>WS2_32.lib;Advapi32.lib</AdditionalDependencies>
++    </Link>
+   </ItemDefinitionGroup>
+   <ItemGroup>
+     <ClCompile Include="..\lib\base64.c" />
+@@ -190,16 +236,18 @@
+     <ClCompile Include="..\lib\fko_server_auth.c" />
+     <ClCompile Include="..\lib\fko_timestamp.c" />
+     <ClCompile Include="..\lib\fko_user.c" />
+-    <ClCompile Include="..\lib\fko_util.c" />
++    <ClCompile Include="..\common\fko_util.c" />
+     <ClCompile Include="..\lib\gpgme_funcs.c" />
+     <ClCompile Include="..\lib\hmac.c" />
+     <ClCompile Include="..\lib\md5.c" />
+     <ClCompile Include="..\lib\rijndael.c" />
+     <ClCompile Include="..\lib\sha1.c" />
+     <ClCompile Include="..\lib\sha2.c" />
+-    <ClCompile Include="..\lib\strlcat.c" />
+-    <ClCompile Include="..\lib\strlcpy.c" />
++    <ClCompile Include="..\lib\sha3.c" />
++    <ClCompile Include="..\common\strlcat.c" />
++    <ClCompile Include="..\common\strlcpy.c" />
+     <ClCompile Include="getlogin.c" />
++    <ClCompile Include="..\..\swig\libfko_wrap.c" />
+   </ItemGroup>
+   <ItemGroup>
+     <ClInclude Include="..\common\common.h" />
+@@ -218,10 +266,11 @@
+     <ClInclude Include="..\lib\rijndael.h" />
+     <ClInclude Include="..\lib\sha1.h" />
+     <ClInclude Include="..\lib\sha2.h" />
++    <ClInclude Include="..\lib\sha3.h" />
+     <ClInclude Include="config.h" />
+     <ClInclude Include="getlogin.h" />
+   </ItemGroup>
+   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+   <ImportGroup Label="ExtensionTargets">
+   </ImportGroup>
+-</Project>
+\ No newline at end of file
++</Project>
