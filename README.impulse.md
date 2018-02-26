@@ -6,6 +6,8 @@ The purpose of this fork is to provide additional build scripts and configuratio
 
 The following are my notes from figuring this process out. The actual build steps are on our local bamboo cluster, but these notes represent my experiments figuring out how to configure that. It is left as future work to clean this up for public consumption.
 
+Windows:
+
 ```
 # working under Visual Studio 2017 (presumably requires 2015 tools installed)
 # requires git bash and swig
@@ -14,7 +16,7 @@ The following are my notes from figuring this process out. The actual build step
 
 # git bash
 # cd work dir
-git clone https://github.com/mrash/fwknop.git
+git clone https://github.com/impulse-point/fwknop.git
 
 # cmd
 vcvarsall.bat x64
@@ -24,13 +26,13 @@ vcvarsall.bat x64
 devenv fwknop\win32\libfko.vcproj /upgrade
 
 # git bash
-mkdir .swig
-pushd .swig
-swig -csharp -I../fwknop/lib -I../fwknop/win32 -outcurrentdir /e/libfko.i
+mkdir fwknop/.swig
+pushd fwknop/.swig
+swig -csharp -I../lib -I../win32 -outcurrentdir ../impulse/libfko.i
 popd
 
 # git bash
-patch fwknop/win32/libfko.vcxproj /e/libfko.vcxproj.patch
+patch fwknop/win32/libfko.vcxproj fwknop/impulse/libfko.vcxproj.patch
 
 # cmd
 # https://stackoverflow.com/a/33386141/9290998
@@ -43,51 +45,40 @@ msbuild fwknop\win32\libfko.vcxproj /p:Platform=x64 /p:Configuration=Release /p:
 # fwknop/win32/Release/Win32/libfko.dll
 # fwknop/win32/Release/x64/libfko.dll
 
-
-
-
-
-
-
-
-
-msbuild libfko_build_process/Fwknop/Fwknop.sln /t:Fwknop:rebuild /p:Platform="Any CPU" /p:Configuration=Release
+# cmd
+cd fwknop\impulse\Fwknop
+dotnet restore /p:Platform="Any CPU"
+msbuild Fwknop.sln /t:Fwknop:rebuild /p:Platform="Any CPU" /p:Configuration=Release
+msbuild Fwknop.sln /t:FwknopDotNetStandard:rebuild /p:Platform="Any CPU" /p:Configuration=Release
 
 # output is at
-# libfko_build_process/Fwknop/Fwknop/bin/Release/fwknop.dll
-# libfko_build_process/Fwknop/Fwknop/bin/Release/Fwknop.pdb
+# fwknop/impulse/Fwknop/Fwknop/bin/Release/Fwknop.dll
+# fwknop/impulse/Fwknop/Fwknop/bin/Release/Fwknop.pdb
 
+# bash
+mkdir -p fwknop/.build/sources
+mkdir -p fwknop/.build/win/{x86,x64}
+mkdir -p fwknop/.build/mac
+mkdir -p fwknop/.build/csharp/{classic,standard}
+cp fwknop/.swig/*.cs fwknop/.build/sources/
+cp fwknop/win32/Release/Win32/libfko.dll fwknop/.build/win/x86/
+cp fwknop/win32/Release/x64/libfko.dll fwknop/.build/win/x64/
+cp <MAC DYLIB> fwknop/.build/mac/
+cp fwknop/impulse/Fwknop/Fwknop/bin/Release/Fwknop.{dll,pdb} fwknop/.build/csharp/classic
+cp fwknop/impulse/Fwknop/FwknopDotNetStandard/bin/Release/netstandard2.0/Fwknop.{dll,pdb} fwknop/.build/csharp/standard
 
+# cmd
+nuget pack fwknop\impulse\Fwknop.nuspec
+nuget push Fwknop.9.9.9.nupkg -Source Artifactory
+```
 
+Mac:
 
-
-nuget pack libfko_build_process\Fwknop.nuspec
-nuget push Fwknop.1.0.4.nupkg -Source Artifactory
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 had to install extra command line tools?
 xcode-select --install
 
-
-
-
-git clone https://github.com/mrash/fwknop.git
-
+git clone https://github.com/impulse-point/fwknop.git
 
 rm -rf build
 mkdir build
