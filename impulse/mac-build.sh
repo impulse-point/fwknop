@@ -9,7 +9,7 @@ mkdir -p $BUILD_DIR
 pushd $BUILD_DIR
 
 OPTS="-I../lib -I../common -I/usr/include/machine -include ../iphone/Classes/config.h -include sys/_types.h -dynamiclib"
-SOURCES="`find ../{lib,common} -name '*.c' | grep -v fko_utests.c`"
+SOURCES="`find ../{lib,common,.swig} -name '*.c' | grep -v fko_utests.c`"
 OUTPUT=libfko.dylib
 
 echo -e "Found source files:\n$SOURCES"
