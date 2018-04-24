@@ -66,9 +66,6 @@
     <ClCompile Include="..\lib\fko_user.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\lib\fko_util.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="getlogin.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -90,10 +87,19 @@
     <ClCompile Include="..\lib\sha2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\lib\strlcat.c">
+    <ClCompile Include="..\common\fko_util.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\lib\strlcpy.c">
+    <ClCompile Include="..\lib\sha3.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\strlcat.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common\strlcpy.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\.swig\libfko_wrap.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -150,6 +156,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\lib\sha2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lib\sha3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
