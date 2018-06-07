@@ -28,7 +28,7 @@
 
 	<!-- linux -->
 	<ItemGroup Condition=" '$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' ">
-		<Content Include="$(MSBuildThisFileDirectory)linux\libfko.so.3.0.0">
+		<Content Include="$(MSBuildThisFileDirectory)linux\libfko.so">
 			<Link>libfko.so.3.0.0</Link>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
