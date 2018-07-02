@@ -8,23 +8,33 @@ rm -rf $BUILD_DIR
 mkdir -p $BUILD_DIR
 pushd $BUILD_DIR
 
+OUT_DIR_MAC=mac
+OUT_DIR_IOS=ios
+mkdir -p $OUT_DIR_MAC
+mkdir -p $OUT_DIR_IOS
+
 OPTS="-I../lib -I../common -I/usr/include/machine -include ../iphone/Classes/config.h -include sys/_types.h -dynamiclib"
 SOURCES="`find ../{lib,common,.swig} -name '*.c' | grep -v fko_utests.c`"
 OUTPUT=libfko.dylib
 
 echo -e "Found source files:\n$SOURCES"
 
-echo "Building $OUTPUT.x86_64"
-clang -target x86_64-apple-darwin $OPTS $SOURCES -o $OUTPUT.x86_64
+echo "Building $OUT_DIR_MAC/$OUTPUT.x86_64"
+clang -target x86_64-apple-darwin $OPTS $SOURCES -o $OUT_DIR_MAC/$OUTPUT.x86_64
 
-echo "Building $OUTPUT.i386"
-clang -target i386-apple-darwin $OPTS $SOURCES -o $OUTPUT.i386
+echo "Building $OUT_DIR_MAC/$OUTPUT.i386"
+clang -target i386-apple-darwin $OPTS $SOURCES -o $OUT_DIR_MAC/$OUTPUT.i386
 
-# theoretically, but won't compile for device, and untested anyway
-# clang -target x86_64-apple-darwin -miphoneos-version-min=9.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk $OPTS $SOURCES -o $OUTPUT.simulator
-# clang -target arm64-apple-darwin -miphoneos-version-min=9.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk $OPTS $SOURCES -o $OUTPUT.ios
+echo "Building $OUT_DIR_IOS/$OUTPUT.simulator"
+clang -target x86_64-apple-darwin -miphoneos-version-min=9.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk $OPTS $SOURCES -o $OUT_DIR_IOS/$OUTPUT.simulator
 
-echo "Combining output into fat library: $OUTPUT"
-lipo $OUTPUT.* -output $OUTPUT -create
+echo "Building $OUT_DIR_IOS/$OUTPUT.ios"
+clang -target arm64-apple-darwin -miphoneos-version-min=9.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk $OPTS $SOURCES -o $OUT_DIR_IOS/$OUTPUT.ios
+
+echo "Combining $OUT_DIR_MAC/$OUTPUT.x86_64 and $OUT_DIR_MAC/$OUTPUT.i386 into $OUT_DIR_MAC/$OUTPUT"
+lipo $OUT_DIR_MAC/$OUTPUT.* -output $OUT_DIR_MAC/$OUTPUT -create
+
+echo "Combining $OUT_DIR_IOS/$OUTPUT.simulator and $OUT_DIR_IOS/$OUTPUT.ios into $OUT_DIR_IOS/$OUTPUT"
+lipo $OUT_DIR_IOS/$OUTPUT.* -output $OUT_DIR_IOS/$OUTPUT -create
 
 popd
