@@ -12,6 +12,14 @@
 		</Content>
 	</ItemGroup>
 
+	<!-- ios -->
+	<ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' or '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' or '$(Configuration)|$(Platform)' == 'Debug|iPhone' or '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+		<Content Include="$(MSBuildThisFileDirectory)mac\libfko.dylib">
+			<Link>$(DeviceSpecificOutputPath)$(_AppBundleName).app\Contents\MonoBundle\libfko.dylib</Link>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
 	<!-- windows -->
 	<ItemGroup Condition=" '$(OS)' == 'Windows_NT' and '$(Platform)' == 'x86' ">
 		<Content Include="$(MSBuildThisFileDirectory)x86\libfko.dll">
