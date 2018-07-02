@@ -18,7 +18,7 @@
 		<file src="..\.build\mac\libfko.dylib" target="build\mac"/>
 
 		<!-- ios natives -->
-		<file src="..\.build\ios\libfko.dylib" target="buid\ios"/>
+		<file src="..\.build\ios\libfko.dylib" target="build\ios"/>
 
 		<!-- windows natives -->
 		<file src="..\.build\win\x86\libfko.dll" target="build\x86"/>
