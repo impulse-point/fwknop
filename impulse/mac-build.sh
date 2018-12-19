@@ -23,10 +23,10 @@ echo "Building $OUT_DIR_MAC/$OUTPUT"
 clang -target x86_64-apple-darwin $OPTS $SOURCES -o $OUT_DIR_MAC/$OUTPUT
 
 echo "Building $OUT_DIR_IOS/$OUTPUT.simulator"
-clang -target x86_64-apple-darwin -miphoneos-version-min=9.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk $OPTS $SOURCES -o $OUT_DIR_IOS/$OUTPUT.simulator
+clang -target x86_64-apple-darwin -miphoneos-version-min=12.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk $OPTS $SOURCES -o $OUT_DIR_IOS/$OUTPUT.simulator
 
 echo "Building $OUT_DIR_IOS/$OUTPUT.ios"
-clang -target arm64-apple-darwin -miphoneos-version-min=9.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk $OPTS $SOURCES -o $OUT_DIR_IOS/$OUTPUT.ios
+clang -target arm64-apple-darwin -miphoneos-version-min=12.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk $OPTS $SOURCES -o $OUT_DIR_IOS/$OUTPUT.ios
 
 echo "Combining $OUT_DIR_IOS/$OUTPUT.simulator and $OUT_DIR_IOS/$OUTPUT.ios into $OUT_DIR_IOS/$OUTPUT"
 lipo $OUT_DIR_IOS/$OUTPUT.* -output $OUT_DIR_IOS/$OUTPUT -create
