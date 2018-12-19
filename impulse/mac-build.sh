@@ -20,7 +20,7 @@ OUTPUT=libfko.dylib
 echo -e "Found source files:\n$SOURCES"
 
 echo "Building $OUT_DIR_MAC/$OUTPUT"
-clang -target x86_64-apple-darwin $OPTS $SOURCES -o $OUT_DIR_MAC/$OUTPUT.x86_64
+clang -target x86_64-apple-darwin $OPTS $SOURCES -o $OUT_DIR_MAC/$OUTPUT
 
 echo "Building $OUT_DIR_IOS/$OUTPUT.simulator"
 clang -target x86_64-apple-darwin -miphoneos-version-min=9.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk $OPTS $SOURCES -o $OUT_DIR_IOS/$OUTPUT.simulator
