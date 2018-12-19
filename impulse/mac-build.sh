@@ -19,20 +19,14 @@ OUTPUT=libfko.dylib
 
 echo -e "Found source files:\n$SOURCES"
 
-echo "Building $OUT_DIR_MAC/$OUTPUT.x86_64"
+echo "Building $OUT_DIR_MAC/$OUTPUT"
 clang -target x86_64-apple-darwin $OPTS $SOURCES -o $OUT_DIR_MAC/$OUTPUT.x86_64
-
-echo "Building $OUT_DIR_MAC/$OUTPUT.i386"
-clang -target i386-apple-darwin $OPTS $SOURCES -o $OUT_DIR_MAC/$OUTPUT.i386
 
 echo "Building $OUT_DIR_IOS/$OUTPUT.simulator"
 clang -target x86_64-apple-darwin -miphoneos-version-min=9.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk $OPTS $SOURCES -o $OUT_DIR_IOS/$OUTPUT.simulator
 
 echo "Building $OUT_DIR_IOS/$OUTPUT.ios"
 clang -target arm64-apple-darwin -miphoneos-version-min=9.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk $OPTS $SOURCES -o $OUT_DIR_IOS/$OUTPUT.ios
-
-echo "Combining $OUT_DIR_MAC/$OUTPUT.x86_64 and $OUT_DIR_MAC/$OUTPUT.i386 into $OUT_DIR_MAC/$OUTPUT"
-lipo $OUT_DIR_MAC/$OUTPUT.* -output $OUT_DIR_MAC/$OUTPUT -create
 
 echo "Combining $OUT_DIR_IOS/$OUTPUT.simulator and $OUT_DIR_IOS/$OUTPUT.ios into $OUT_DIR_IOS/$OUTPUT"
 lipo $OUT_DIR_IOS/$OUTPUT.* -output $OUT_DIR_IOS/$OUTPUT -create
