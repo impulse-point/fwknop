@@ -24,11 +24,21 @@ clang -target x86_64-apple-darwin $OPTS $SOURCES -o $OUT_DIR_MAC/$OUTPUT
 
 echo "Building $OUT_DIR_IOS/$OUTPUT.simulator"
 clang -target x86_64-apple-darwin -miphoneos-version-min=9.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk $OPTS $SOURCES -o $OUT_DIR_IOS/$OUTPUT.simulator
+TPUT.simulator
 
-echo "Building $OUT_DIR_IOS/$OUTPUT.ios"
-clang -target arm64-apple-darwin -miphoneos-version-min=9.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk $OPTS $SOURCES -o $OUT_DIR_IOS/$OUTPUT.ios
+echo "Building $OUT_DIR_IOS/$OUTPUT.ios.armv7"
+clang -target armv7-apple-darwin -miphoneos-version-min=9.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk $OPTS $SOURCES -o $OUT_DIR_IOS/$OUTPUT.ios.armv7
 
-echo "Combining $OUT_DIR_IOS/$OUTPUT.simulator and $OUT_DIR_IOS/$OUTPUT.ios into $OUT_DIR_IOS/$OUTPUT"
+echo "Building $OUT_DIR_IOS/$OUTPUT.ios.armv7s"
+clang -target armv7s-apple-darwin -miphoneos-version-min=9.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk $OPTS $SOURCES -o $OUT_DIR_IOS/$OUTPUT.ios.armv7s
+
+echo "Building $OUT_DIR_IOS/$OUTPUT.ios.arm64"
+clang -target arm64-apple-darwin -miphoneos-version-min=9.0 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk $OPTS $SOURCES -o $OUT_DIR_IOS/$OUTPUT.ios.arm64
+
+echo "Listing outputs"
+file $OUT_DIR_IOS/$OUTPUT.*
+
+echo "Combining all outputs into $OUT_DIR_IOS/$OUTPUT"
 lipo $OUT_DIR_IOS/$OUTPUT.* -output $OUT_DIR_IOS/$OUTPUT -create
 
 popd
