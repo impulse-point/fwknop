@@ -84,3 +84,5 @@ erlang/_build
 erlang/rebar.lock
 
 /build
+
+/.swig
