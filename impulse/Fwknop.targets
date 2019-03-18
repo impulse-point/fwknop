@@ -22,12 +22,12 @@
 	</ItemGroup>
 
 	<!-- windows -->
-	<ItemGroup Condition=" '$(OS)' == 'Windows_NT' and '$(Platform)' == 'x86' ">
+	<!-- <ItemGroup Condition=" '$(OS)' == 'Windows_NT' and '$(Platform)' == 'x86' ">
 		<Content Include="$(MSBuildThisFileDirectory)x86\libfko.dll">
 			<Link>libfko.dll</Link>
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
-	</ItemGroup>
+	</ItemGroup> -->
 	<ItemGroup Condition=" '$(OS)' == 'Windows_NT' and ('$(Platform)' == 'x64' or '$(Platform)' == 'AnyCPU') ">
 		<Content Include="$(MSBuildThisFileDirectory)x64\libfko.dll">
 			<Link>libfko.dll</Link>
