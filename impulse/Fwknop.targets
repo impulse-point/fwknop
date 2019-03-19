@@ -42,4 +42,24 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
 	</ItemGroup>
+
+	<!-- android -->
+	<ItemGroup Condition=" '$(AndroidBuildApplicationPackage)' == 'True' and '$(Platform)' == 'x86' ">
+		<Content Include="$(MSBuildThisFileDirectory)android\x86\libfwknop.so">
+			<Link>libfko.so</Link>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup Condition=" '$(AndroidBuildApplicationPackage)' == 'True' and '$(Platform)' == 'x64' ">
+		<Content Include="$(MSBuildThisFileDirectory)android\x86_64\libfwknop.so">
+			<Link>libfko.so</Link>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup Condition=" '$(AndroidBuildApplicationPackage)' == 'True' and '$(Platform)' == 'ARM' ">
+		<Content Include="$(MSBuildThisFileDirectory)android\armeabi-v7a\libfwknop.so">
+			<Link>libfko.so</Link>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 </Project>
