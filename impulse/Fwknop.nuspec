@@ -28,10 +28,10 @@
 		<file src="..\.build\linux\libfko.so" target="build\linux"/>
 
 		<!-- android natives -->
-		<file src="..\.build\android\arm64-v8a\libfwknop.so" target="build\android\arm64-v8a"/>
-		<file src="..\.build\android\armeabi-v7a\libfwknop.so" target="build\android\armeabi-v7a"/>
-		<file src="..\.build\android\x86\libfwknop.so" target="build\android\x86"/>
-		<file src="..\.build\android\x86_64\libfwknop.so" target="build\android\x86_64"/>
+		<file src="..\.build\android\arm64-v8a\libfko.so" target="build\android\arm64-v8a"/>
+		<file src="..\.build\android\armeabi-v7a\libfko.so" target="build\android\armeabi-v7a"/>
+		<file src="..\.build\android\x86\libfko.so" target="build\android\x86"/>
+		<file src="..\.build\android\x86_64\libfko.so" target="build\android\x86_64"/>
 
 		<!-- mac C# -->
 		<file src="..\.build\csharp\standard\Fwknop.dll" target="lib\Xamarin.Mac20"/>

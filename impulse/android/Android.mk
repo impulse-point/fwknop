@@ -1,6 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
-LOCAL_MODULE := fwknop
+LOCAL_MODULE := fko
 LOCAL_SRC_FILES := \
 	../../lib/sha3.c \
 	../../lib/fko_client_timeout.c \
