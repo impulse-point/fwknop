@@ -46,12 +46,15 @@
 	<!-- android -->
 	<ItemGroup Condition=" '$(TargetFrameworkIdentifier)' == 'MonoAndroid' ">
 		<AndroidNativeLibrary Include="$(MSBuildThisFileDirectory)android\armeabi-v7a\libfwknop.so">
+			<Link>lib/armeabi-v7a/libfwknop.so</Link>
 			<Abi>armeabi-v7a</Abi>
 		</AndroidNativeLibrary>
 		<AndroidNativeLibrary Include="$(MSBuildThisFileDirectory)android\arm64-v8a\libfwknop.so">
+			<Link>lib/arm64-v8a/libfwknop.so</Link>
 			<Abi>arm64-v8a</Abi>
 		</AndroidNativeLibrary>
 		<AndroidNativeLibrary Include="$(MSBuildThisFileDirectory)android\x86\libfwknop.so">
+			<Link>lib/x86/libfwknop.so</Link>
 			<Abi>x86</Abi>
 		</AndroidNativeLibrary>
 	</ItemGroup>
